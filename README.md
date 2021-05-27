@@ -22,15 +22,36 @@ $ npm install
 ### 設定
 各スクリプトの`NodeClam().init()`で指定している値を環境に合わせて設定してください。
 
+```javascript
+// Amazon Linux2へインストールした際の一例
+const ClamScan = new NodeClam().init({
+  clamscan: {
+    path: '/usr/bin/clamscan',
+    db: '/var/lib/clamav'
+  }
+})
+```
+```javascript
+const ClamScan = new NodeClam().init({
+  clamdscan: {
+    socket: '/run/clamd.scan/clamd.sock',
+    host: '127.0.0.1',
+    port: 3310,
+    path: '/usr/bin/clamdscan',
+    config_file: '/etc/clamd.d/scan.conf'
+  }
+})
+```
+
 ### 実行する
 コマンド版
 ```shellsession
 $ node check_clamscan.js
 ```
 
-デーモン版
+デーモン版。
 ```shellsession
-$ node check_clamdscan.js
+$ sudo node check_clamdscan.js
 ```
 
 ## 参考
