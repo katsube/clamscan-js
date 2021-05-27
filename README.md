@@ -47,11 +47,13 @@ const ClamScan = new NodeClam().init({
 コマンド版
 ```shellsession
 $ node clamscan_file.js
+$ node clamscan_dir.js
 ```
 
 デーモン版。
 ```shellsession
 $ sudo node clamdscan_file.js
+$ sudo node clamdscan_dir.js
 ```
 
 ## 参考

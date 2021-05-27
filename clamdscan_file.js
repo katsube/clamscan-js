@@ -1,5 +1,5 @@
 /**
- * clamdscanで感染チェック
+ * clamdscanで感染チェック（ファイル）
  *
  */
 const path = require('path')
@@ -42,4 +42,4 @@ ClamScan
   })
   .catch(err => {
     console.log(`[ERROR2] ${err}`)
-  });
+  })
