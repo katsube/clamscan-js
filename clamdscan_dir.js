@@ -22,7 +22,7 @@ const ClamScan = new NodeClam().init({
 // ウイルススキャン
 //-------------------------------------------
 ClamScan
-  .then(async clamscan => {
+  .then( clamscan => {
     try {
       const target = path.resolve('sample/')
       clamscan.scan_dir(target, (err, good_files, bad_files, viruses) => {
