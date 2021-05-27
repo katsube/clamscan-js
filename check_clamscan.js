@@ -1,0 +1,42 @@
+/**
+ * clamscanで感染チェック
+ *
+ */
+
+const NodeClam = require('clamscan')
+
+//-------------------------------------------
+// 初期化
+//-------------------------------------------
+const ClamScan = new NodeClam().init({
+  clamscan: {
+    path: '/usr/local/bin/clamscan',
+    db: '/usr/local/var/lib/clamav'
+  }
+})
+
+//-------------------------------------------
+// ウイルススキャン
+//-------------------------------------------
+ClamScan
+  .then(async clamscan => {
+    try {
+      // const target = 'sample/arupaka.png'
+      const target = 'sample/eicar.com'
+      const {is_infected, file, viruses} = await clamscan.is_infected(target)
+
+      // 感染チェック
+      if (is_infected){
+        console.log(`${file} は ${viruses} に感染しています`)
+      }
+      else{
+        console.log(`${file} は健康です`)
+      }
+    }
+    catch (err) {
+      console.log(`[ERROR1] ${err}`)
+    }
+  })
+  .catch(err => {
+    console.log(`[ERROR2] ${err}`)
+  });

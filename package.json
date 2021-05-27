@@ -1,0 +1,25 @@
+{
+  "name": "clamscan",
+  "version": "1.0.0",
+  "description": "clamscan sample",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katsube/clamscan-js.git"
+  },
+  "keywords": [
+    "ClamAV",
+    "clamscan"
+  ],
+  "author": "M.Katsube",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/katsube/clamscan-js/issues"
+  },
+  "homepage": "https://github.com/katsube/clamscan-js#readme",
+  "dependencies": {
+    "clamscan": "^1.4.2"
+  }
+}
