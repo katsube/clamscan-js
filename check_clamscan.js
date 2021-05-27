@@ -3,6 +3,7 @@
  *
  */
 
+const path = require('path')
 const NodeClam = require('clamscan')
 
 //-------------------------------------------
@@ -21,8 +22,8 @@ const ClamScan = new NodeClam().init({
 ClamScan
   .then(async clamscan => {
     try {
-      // const target = 'sample/arupaka.png'
-      const target = 'sample/eicar.com'
+      // const target = path.resolve('sample/arupaka.png')
+      const target = path.resolve('sample/eicar.com')
       const {is_infected, file, viruses} = await clamscan.is_infected(target)
 
       // 感染チェック

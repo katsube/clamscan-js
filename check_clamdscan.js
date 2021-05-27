@@ -1,22 +1,40 @@
-const NodeClam = require('clamscan');
-const ClamScan = new NodeClam().init({
-  clamscan: {
-    path: '/usr/local/bin/clamscan',
-    db: '/usr/local/var/lib/clamav'
-  }
-});
+/**
+ * clamdscanで感染チェック
+ *
+ */
+const path = require('path')
+const NodeClam = require('clamscan')
 
+//-------------------------------------------
+// 初期化
+//-------------------------------------------
+const ClamScan = new NodeClam().init({
+  clamdscan: {
+    socket: '/tmp/clamd.socket',
+    host: '127.0.0.1',
+    port: 3310,
+    path: '/bin/clamdscan',
+    config_file: '/usr/local/etc/clamav/clamd.conf'
+  }
+})
+
+//-------------------------------------------
+// ウイルススキャン
+//-------------------------------------------
 ClamScan
   .then(async clamscan => {
     try {
-        const {is_infected, file, viruses} = await clamscan.is_infected('/Users/katsube/Desktop/E2A0ilGVUAAqtC1.png');
+      // const target = path.resolve('sample/arupaka.png')
+      const target = path.resolve('sample/eicar.com')
+      const {is_infected, file, viruses} = await clamscan.is_infected(target)
 
-        if (is_infected){
-          console.log(`${file} は ${viruses} に感染しています`);
-        }
-        else{
-          console.log(`${file} は健康です`);
-        }
+      // 感染チェック
+      if (is_infected){
+        console.log(`${file} は ${viruses} に感染しています`)
+      }
+      else{
+        console.log(`${file} は健康です`)
+      }
     }
     catch (err) {
       console.log(`[ERROR1] ${err}`)
