@@ -22,8 +22,8 @@ $ npm install
 ### 設定
 各スクリプトの`NodeClam().init()`で指定している値を環境に合わせて設定してください。
 
+#### Amazon Linux2へインストールした際の一例
 ```javascript
-// Amazon Linux2へインストールした際の一例
 const ClamScan = new NodeClam().init({
   clamscan: {
     path: '/usr/bin/clamscan',
