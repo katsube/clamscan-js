@@ -46,12 +46,12 @@ const ClamScan = new NodeClam().init({
 ### 実行する
 コマンド版
 ```shellsession
-$ node check_clamscan.js
+$ node clamscan_file.js
 ```
 
 デーモン版。
 ```shellsession
-$ sudo node check_clamdscan.js
+$ sudo node clamdscan_file.js
 ```
 
 ## 参考
